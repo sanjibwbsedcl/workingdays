@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Working Day Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style>
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #0d47a1, #1976d2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.clock {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+   
+    color: #ffffff;}
+
+.container {
+    background: linear-gradient(145deg, #ffffff, #c4f3f9);
+    width:100%;
+    max-width:480px;
+    padding:25px;
+    border-radius:18px;
+    position:relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+
+    /* 3D Shadow */
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.25),
+        0 5px 15px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+
+
+}
+
+
+}
+
+.header {
+    display:flex;
+    align-items:center;
+    margin-bottom:20px;
+    border-bottom:2px solid #1976d2;
+    padding-bottom:10px;
+}
+
+.header img {
+    height:55px;
+    margin-right:2px;
+}
+
+.header-text h2 {
+    margin:0;
+    color:#1976d2;
+    font-size:14px;
+  
+
+}
+
+.header-text h3 {
+    margin:0;
+    font-size:18px;
+    color:#0d47a1;
+   
+	
+}
+
+.title {
+    text-align:center;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.row {
+    display:flex;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+ .footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: gray;
+		text-align:Center;
+}
+label {
+    width:120px;
+    font-weight:600;
+    font-size:14px;
+}
+.topRightText {
+    
+text-align:right;
+top: 10px;
+    right: 15px;
+    font-size: 12px;
+    
+    color: #0a7a28;
+    opacity: 0.8;
+    font-family: Arial, sans-serif;
+}
+
+
+input {
+    flex: 1;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+
+button {
+    padding:6px 10px;
+    margin-left:6px;
+    font-size:13px;
+    background:#1976d2;
+    color:white;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+button:hover {
+    background:#0d47a1;
+}
+
+#copyMessage {
+    display:none;
+    color:#0a7a28;
+    font-size:13px;
+    font-weight:600;
+    margin-top:8px;
+    text-align:center;
+}
+
+#errorMessage {
+    display:none;
+    background:#ffe6e6;
+    color:#b30000;
+    padding:6px;
+    font-size:13px;
+    margin-bottom:10px;
+    border-radius:4px;
+}
+@media (max-width: 480px) {
+
+    .row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    label {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+
+    button {
+        margin-left: 0;
+        margin-top: 6px;
+    }
+
+    .companyName {
+        font-size: 13px;
+    }
+
+    .departmentName {
+        font-size: 12px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+<div id="clock" class="clock"></div>
+<div class="container">
+
+    <div id="errorMessage"></div>
+<div class="topRightText">Last updated on 14.02.2026</div>
+    <div class="header">
+        <img src="wbsedcl_logo.png">
+        <div class="header-text">
+            <h3>WBSEDCL</h3>
+            <h2>       Procurement & Contract Department.           </h2>
+        </div>
+    </div>
+
+    <div class="title">Working Day Calculator</div>
+
+    <div class="row">
+        <label>Enter DI Date</label>
+        <input type="date" id="startDate">
+    </div>
+
+    <div class="row">
+        <label>Working Days</label>
+        <input type="number" id="workingDays">
+    </div>
+
+    <div class="row">
+        <label>Due On</label>
+        <input type="text" id="result" readonly>
+        <button onclick="copyResult()">Copy</button>
+    </div>
+
+    <div id="copyMessage">Date copied successfully.</div>
+<div class="footer">
+        Excluding Saturday, Sunday & Holidays
+
+
+</div>
+
+
+<script>
+let holidays = [];
+let holidayLoaded = false;
+
+// Load CSV file
+fetch("holidays.csv")
+.then(response => {
+    if (!response.ok) {
+        throw new Error("CSV not found");
+    }
+    return response.text();
+})
+.then(text => {
+    let rows = text.split("\n");
+    rows.shift(); // remove header
+
+    rows.forEach(row => {
+        let date = row.trim();
+        if (date !== "") {
+            holidays.push(date);
+        }
+    });
+
+    holidayLoaded = true;
+})
+.catch(error => {
+    showError("⚠ Unable to load holiday CSV file. Only weekends will be excluded.");
+});
+
+function updateClock() {
+    const now = new Date();
+
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    document.getElementById("clock").innerHTML =
+        hours + ":" + minutes + ":" + seconds;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
+
+function calculateDate() {
+
+    let startValue = document.getElementById("startDate").value;
+    let daysValue = document.getElementById("workingDays").value;
+
+    if (!startValue || !daysValue) return;
+
+    let startDate = new Date(startValue);
+    let daysToAdd = parseInt(daysValue)-1;
+
+    let count = 0;
+
+    while (count < daysToAdd) {
+        startDate.setDate(startDate.getDate() + 1);
+
+        let day = startDate.getDay();
+        let formatted = formatDate(startDate);
+
+        if (day !== 0 && day !== 6 && (!holidayLoaded || !holidays.includes(formatted))) {
+            count++;
+        }
+    }
+
+    document.getElementById("result").value = formatDate(startDate);
+}
+
+function formatDate(date) {
+    let dd = String(date.getDate()).padStart(2, '0');
+    let mm = String(date.getMonth() + 1).padStart(2, '0');
+    let yyyy = date.getFullYear();
+    return dd + "-" + mm + "-" + yyyy;
+}
+
+document.getElementById("startDate").addEventListener("input", calculateDate);
+document.getElementById("workingDays").addEventListener("input", calculateDate);
+
+function copyResult() {
+    let result = document.getElementById("result").value;
+    if (!result) return;
+
+    navigator.clipboard.writeText(result);
+
+    let msg = document.getElementById("copyMessage");
+    msg.style.display = "block";
+
+    setTimeout(() => {
+        msg.style.display = "none";
+    }, 2000);
+}
+
+function showError(message) {
+    let box = document.getElementById("errorMessage");
+    box.innerHTML = message;
+    box.style.display = "block";
+}
+let specialMessage = "🎉 Happy New Year 2026!";
+
+if (specialMessage !== "") {
+    let banner = document.getElementById("wishBanner");
+    banner.innerText = specialMessage;
+    banner.style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
