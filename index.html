@@ -1,319 +1,1212 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="UTF-8">
+
 <title>Working Day Calculator</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 
 <style>
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
 body {
-    margin:0;
+
+    margin: 0;
+
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #0d47a1, #1976d2);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+
+    background:
+        linear-gradient(
+            to right,
+            #0d47a1,
+            #1976d2
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    height: 100vh;
+
+    padding-top: 34px;
+
+    box-sizing: border-box;
+
 }
+
+
+/* =========================================================
+   SCROLLING HOLIDAY MESSAGE
+   ========================================================= */
+
+.holiday-scroll {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 34px;
+
+    background: #eaf2fb;
+
+    border-bottom: 2px solid #1976d2;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    z-index: 9999;
+
+}
+
+
+/* =========================================================
+   HOLIDAY UPDATE LABEL
+   ========================================================= */
+
+.holiday-scroll-title {
+
+    flex-shrink: 0;
+
+    height: 34px;
+
+    line-height: 34px;
+
+    padding: 0 14px;
+
+    background: #0d47a1;
+
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   SCROLLING WINDOW
+   ========================================================= */
+
+.holiday-scroll-window {
+
+    flex: 1;
+
+    height: 34px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+/* =========================================================
+   SCROLLING MESSAGE
+   ========================================================= */
+
+.holiday-scroll-content {
+
+    position: absolute;
+
+    left: 100%;
+
+    white-space: nowrap;
+
+    color: #0d47a1;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    animation:
+        holidayScroll 32s linear infinite;
+
+}
+
+
+/* =========================================================
+   SCROLL → CENTRE → STOP → CONTINUE
+   ========================================================= */
+
+@keyframes holidayScroll {
+
+    /* Start from right */
+
+    0% {
+
+        left: 100%;
+
+        transform: translateX(0);
+
+    }
+
+
+    /* Move to centre */
+
+    32% {
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+    }
+
+
+    /* STOP AT CENTRE */
+
+    50% {
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+    }
+
+
+    /* Continue towards left */
+
+    100% {
+
+        left: -100%;
+
+        transform: translateX(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
 
 .container {
+
     position: relative;
-    background: linear-gradient(145deg, #ffffff, #c4f3f9);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #c4f3f9
+        );
+
     width: 420px;
-    max-width: 95%;   /* IMPORTANT for mobile */
+
+    max-width: 95%;
+
     padding: 20px;
+
     border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.2);
+
 }
 
 
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .header {
-    display:flex;
-    align-items:center;
-    margin-bottom:20px;
-    border-bottom:2px solid #1976d2;
-    padding-bottom:10px;
+
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    border-bottom:
+        2px solid #1976d2;
+
+    padding-bottom: 10px;
+
 }
+
 
 .header img {
-    height:55px;
-    margin-right:2px;
+
+    height: 55px;
+
+    margin-right: 2px;
+
 }
+
 
 .header-text h2 {
-    margin:0;
-    color:#1976d2;
-    font-size:14px;
-  
+
+    margin: 0;
+
+    color: #1976d2;
+
+    font-size: 14px;
 
 }
+
 
 .header-text h3 {
-    margin:0;
-    font-size:18px;
-    color:#0d47a1;
-   
-	
+
+    margin: 0;
+
+    font-size: 18px;
+
+    color: #0d47a1;
+
 }
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
 
 .title {
-    text-align:center;
-    font-weight:600;
-    margin-bottom:15px;
+
+    text-align: center;
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+
 }
+
+
+/* =========================================================
+   ROW
+   ========================================================= */
 
 .row {
-    display:flex;
-    align-items:center;
-    margin-bottom:12px;
+
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+
 }
 
- .footer {
-            margin-top: 15px;
-            font-size: 12px;
-            color: gray;
-		text-align:Center;
-}
-label {
-    width:120px;
-    font-weight:600;
-    font-size:14px;
-}
-.topRightText {
-    
-text-align:right;
-top: 10px;
-    right: 15px;
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+
+    margin-top: 15px;
+
     font-size: 12px;
-    
-    color: #0a7a28;
-    opacity: 0.8;
-    font-family: Arial, sans-serif;
+
+    color: gray;
+
+    text-align: center;
+
 }
 
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+label {
+
+    width: 120px;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   LAST UPDATED
+   ========================================================= */
+
+.topRightText {
+
+    text-align: right;
+
+    top: 10px;
+
+    right: 15px;
+
+    font-size: 12px;
+
+    color: #0a7a28;
+
+    opacity: 0.8;
+
+    font-family: Arial, sans-serif;
+
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
 
 input {
+
     flex: 1;
+
     padding: 6px 8px;
+
     border: 1px solid #ccc;
+
     border-radius: 4px;
-    font-family: "Segoe UI", Arial, sans-serif;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     font-size: 14px;
+
     color: #000;
+
     background-color: #fff;
+
     box-sizing: border-box;
+
 }
+
 
 input[type="date"] {
+
     appearance: none;
+
     -webkit-appearance: none;
+
 }
 
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
 
 button {
-    padding:6px 10px;
-    margin-left:6px;
-    font-size:13px;
-    background:#1976d2;
-    color:white;
-    border:none;
-    border-radius:4px;
-    cursor:pointer;
+
+    padding: 6px 10px;
+
+    margin-left: 6px;
+
+    font-size: 13px;
+
+    background: #1976d2;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
 }
+
 
 button:hover {
-    background:#0d47a1;
+
+    background: #0d47a1;
+
 }
+
+
+/* =========================================================
+   COPY MESSAGE
+   ========================================================= */
 
 #copyMessage {
-    display:none;
-    color:#0a7a28;
-    font-size:13px;
-    font-weight:600;
-    margin-top:8px;
-    text-align:center;
+
+    display: none;
+
+    color: #0a7a28;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-top: 8px;
+
+    text-align: center;
+
 }
+
+
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
 
 #errorMessage {
-    display:none;
-    background:#ffe6e6;
-    color:#b30000;
-    padding:6px;
-    font-size:13px;
-    margin-bottom:10px;
-    border-radius:4px;
+
+    display: none;
+
+    background: #ffe6e6;
+
+    color: #b30000;
+
+    padding: 6px;
+
+    font-size: 13px;
+
+    margin-bottom: 10px;
+
+    border-radius: 4px;
+
 }
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 480px) {
 
-    .row {
-        flex-direction: column;
-        align-items: flex-start;
+
+    body {
+
+        align-items: center;
+
+        height: 100vh;
+
+        min-height: 100vh;
+
+        padding-top: 32px;
+
     }
+
+
+    /* -----------------------------
+       Scrolling message
+       ----------------------------- */
+
+    .holiday-scroll {
+
+        height: 32px;
+
+    }
+
+
+    .holiday-scroll-title {
+
+        height: 32px;
+
+        line-height: 32px;
+
+        padding: 0 9px;
+
+        font-size: 10px;
+
+    }
+
+
+    .holiday-scroll-window {
+
+        height: 32px;
+
+    }
+
+
+    .holiday-scroll-content {
+
+        font-size: 11px;
+
+        animation-duration:
+            30s;
+
+    }
+
+
+    /* -----------------------------
+       Calculator
+       ----------------------------- */
+
+    .container {
+
+        width: 420px;
+
+        max-width: 94%;
+
+        padding: 18px;
+
+    }
+
+
+    .row {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
 
     label {
+
         width: 100%;
+
         margin-bottom: 4px;
+
     }
+
+
+    input {
+
+        width: 100%;
+
+    }
+
 
     button {
+
         margin-left: 0;
+
         margin-top: 6px;
+
     }
+
 
     .companyName {
+
         font-size: 13px;
+
     }
 
+
     .departmentName {
+
         font-size: 12px;
+
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     HOLIDAY SCROLLING MESSAGE
+     ===================================================== -->
+
+<div class="holiday-scroll">
+
+
+    <div class="holiday-scroll-title">
+
+        HOLIDAY UPDATE
+
+    </div>
+
+
+    <div class="holiday-scroll-window">
+
+
+        <div class="holiday-scroll-content">
+
+            
+            1. Id-Ud-Zoha (Bakrid): 28.05.2026 In lieu of 26.05.2026 and 27.05.2026
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            2. Birth Anniversary of Dr. Syama Prasad Mookerjee: 06.07.2026
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     ORIGINAL CALCULATOR
+     ===================================================== -->
+
 <div class="container">
 
+
     <div id="errorMessage"></div>
-<div class="topRightText">Last updated on 30.08.2026</div>
+
+
+    <div class="topRightText">
+
+        Last updated on 30.08.2026
+
+    </div>
+
+
     <div class="header">
-        <img src="wbsedcl_logo.png">
+
+
+        <img
+            src="wbsedcl_logo.png"
+            alt="WBSEDCL Logo"
+        >
+
+
         <div class="header-text">
-            <h3>WBSEDCL</h3>
-            <h2>       Procurement & Contract Department.           </h2>
+
+
+            <h3>
+
+                WBSEDCL
+
+            </h3>
+
+
+            <h2>
+
+                Procurement &amp; Contract Department.
+
+            </h2>
+
+
         </div>
+
+
     </div>
 
-    <div class="title">Working Day Calculator</div>
+
+    <div class="title">
+
+        Working Day Calculator
+
+    </div>
+
 
     <div class="row">
-        <label>Enter DI Date</label>
-        <input type="date" id="startDate">
+
+
+        <label>
+
+            Enter DI Date
+
+        </label>
+
+
+        <input
+            type="date"
+            id="startDate"
+        >
+
+
     </div>
+
 
     <div class="row">
-        <label>Working Days</label>
-        <input type="number" id="workingDays">
+
+
+        <label>
+
+            Working Days
+
+        </label>
+
+
+        <input
+            type="number"
+            id="workingDays"
+        >
+
+
     </div>
+
 
     <div class="row">
-        <label>Due On</label>
-        <input type="text" id="result" readonly>
-        <button onclick="copyResult()">Copy</button>
+
+
+        <label>
+
+            Due On
+
+        </label>
+
+
+        <input
+            type="text"
+            id="result"
+            readonly
+        >
+
+
+        <button
+            onclick="copyResult()"
+        >
+
+            Copy
+
+        </button>
+
+
     </div>
 
-    <div id="copyMessage">Date copied successfully.</div>
-<div class="footer">
-        Excluding Saturday, Sunday & Holidays (2021-2026)
+
+    <div id="copyMessage">
+
+        Date copied successfully.
+
+    </div>
+
+
+    <div class="footer">
+
+        Excluding Saturday, Sunday &amp;
+        Holidays (2021-2026)
+
+    </div>
 
 
 </div>
 
 
 <script>
+
+/* =========================================================
+   HOLIDAY DATA
+   ========================================================= */
+
 let holidays = [];
+
 let holidayLoaded = false;
 
-// Load CSV file
+
+/* =========================================================
+   LOAD CSV FILE
+   ========================================================= */
+
 fetch("holidays.csv")
+
 .then(response => {
+
     if (!response.ok) {
-        throw new Error("CSV not found");
+
+        throw new Error(
+            "CSV not found"
+        );
+
     }
+
     return response.text();
+
 })
+
+
 .then(text => {
-    let rows = text.split("\n");
-    rows.shift(); // remove header
+
+    let rows =
+        text.split(/\r?\n/);
+
+
+    rows.shift();
+
 
     rows.forEach(row => {
-        let date = row.trim();
+
+        let date =
+            row.trim();
+
+
         if (date !== "") {
+
             holidays.push(date);
+
         }
+
     });
 
+
     holidayLoaded = true;
+
+
+    /*
+       Recalculate if
+       values already entered
+    */
+
+    calculateDate();
+
 })
+
+
 .catch(error => {
-    showError("⚠ Unable to load holiday CSV file. Only weekends will be excluded.");
+
+    showError(
+        "⚠ Unable to load holiday CSV file. " +
+        "Only weekends will be excluded."
+    );
+
 });
+
+
+/* =========================================================
+   CALCULATE DATE
+   ========================================================= */
 
 function calculateDate() {
 
-    let startValue = document.getElementById("startDate").value;
-    let daysValue = document.getElementById("workingDays").value;
 
-    if (!startValue || !daysValue) return;
+    let startValue =
+        document.getElementById(
+            "startDate"
+        ).value;
 
-    let startDate = new Date(startValue);
-    let daysToAdd = parseInt(daysValue)-1;
+
+    let daysValue =
+        document.getElementById(
+            "workingDays"
+        ).value;
+
+
+    if (
+        !startValue ||
+        !daysValue
+    ) {
+
+        return;
+
+    }
+
+
+    let days =
+        parseInt(daysValue);
+
+
+    if (
+        isNaN(days) ||
+        days < 1
+    ) {
+
+        document.getElementById(
+            "result"
+        ).value = "";
+
+        return;
+
+    }
+
+
+    let startDate =
+        new Date(
+            startValue +
+            "T00:00:00"
+        );
+
+
+    /*
+       DI Date is counted
+       as Working Day 1
+    */
+
+    let daysToAdd =
+        days - 1;
+
 
     let count = 0;
 
-    while (count < daysToAdd) {
-        startDate.setDate(startDate.getDate() + 1);
 
-        let day = startDate.getDay();
-        let formatted = formatDate(startDate);
+    while (
+        count < daysToAdd
+    ) {
 
-        if (day !== 0 && day !== 6 && (!holidayLoaded || !holidays.includes(formatted))) {
+
+        startDate.setDate(
+            startDate.getDate() + 1
+        );
+
+
+        let day =
+            startDate.getDay();
+
+
+        let formatted =
+            formatDate(startDate);
+
+
+        /*
+           Sunday = 0
+           Saturday = 6
+        */
+
+        if (
+
+            day !== 0 &&
+
+            day !== 6 &&
+
+            (
+                !holidayLoaded ||
+
+                !holidays.includes(
+                    formatted
+                )
+            )
+
+        ) {
+
             count++;
+
         }
+
     }
 
-    document.getElementById("result").value = formatDate(startDate);
+
+    document.getElementById(
+        "result"
+    ).value =
+        formatDate(startDate);
+
 }
+
+
+/* =========================================================
+   FORMAT DATE
+   ========================================================= */
 
 function formatDate(date) {
-    let dd = String(date.getDate()).padStart(2, '0');
-    let mm = String(date.getMonth() + 1).padStart(2, '0');
-    let yyyy = date.getFullYear();
-    return dd + "-" + mm + "-" + yyyy;
+
+
+    let dd =
+        String(
+            date.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    let mm =
+        String(
+            date.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    let yyyy =
+        date.getFullYear();
+
+
+    return (
+        dd +
+        "-" +
+        mm +
+        "-" +
+        yyyy
+    );
+
 }
 
-document.getElementById("startDate").addEventListener("input", calculateDate);
-document.getElementById("workingDays").addEventListener("input", calculateDate);
+
+/* =========================================================
+   INPUT EVENTS
+   ========================================================= */
+
+document
+    .getElementById(
+        "startDate"
+    )
+    .addEventListener(
+        "input",
+        calculateDate
+    );
+
+
+document
+    .getElementById(
+        "workingDays"
+    )
+    .addEventListener(
+        "input",
+        calculateDate
+    );
+
+
+/* =========================================================
+   COPY RESULT
+   ========================================================= */
 
 function copyResult() {
-    let result = document.getElementById("result").value;
-    if (!result) return;
 
-    navigator.clipboard.writeText(result);
 
-    let msg = document.getElementById("copyMessage");
-    msg.style.display = "block";
+    let result =
+        document.getElementById(
+            "result"
+        ).value;
 
-    setTimeout(() => {
-        msg.style.display = "none";
-    }, 2000);
+
+    if (!result) {
+
+        return;
+
+    }
+
+
+    if (
+        navigator.clipboard
+    ) {
+
+
+        navigator.clipboard
+
+            .writeText(result)
+
+            .then(
+                showCopyMessage
+            )
+
+            .catch(
+                fallbackCopy
+            );
+
+
+    }
+
+    else {
+
+        fallbackCopy();
+
+    }
+
 }
+
+
+/* =========================================================
+   COPY SUCCESS MESSAGE
+   ========================================================= */
+
+function showCopyMessage() {
+
+
+    let msg =
+        document.getElementById(
+            "copyMessage"
+        );
+
+
+    msg.style.display =
+        "block";
+
+
+    setTimeout(
+        () => {
+
+            msg.style.display =
+                "none";
+
+        },
+        2000
+    );
+
+}
+
+
+/* =========================================================
+   FALLBACK COPY
+   ========================================================= */
+
+function fallbackCopy() {
+
+
+    let result =
+        document.getElementById(
+            "result"
+        ).value;
+
+
+    let temp =
+        document.createElement(
+            "input"
+        );
+
+
+    temp.value =
+        result;
+
+
+    document.body.appendChild(
+        temp
+    );
+
+
+    temp.select();
+
+
+    document.execCommand(
+        "copy"
+    );
+
+
+    document.body.removeChild(
+        temp
+    );
+
+
+    showCopyMessage();
+
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
 
 function showError(message) {
-    let box = document.getElementById("errorMessage");
-    box.innerHTML = message;
-    box.style.display = "block";
-}
-let specialMessage = "🎉 Happy New Year 2026!";
 
-if (specialMessage !== "") {
-    let banner = document.getElementById("wishBanner");
-    banner.innerText = specialMessage;
-    banner.style.display = "block";
+
+    let box =
+        document.getElementById(
+            "errorMessage"
+        );
+
+
+    box.innerHTML =
+        message;
+
+
+    box.style.display =
+        "block";
+
 }
 
 </script>
 
+
 </body>
+
 </html>
-
-
-
-
-
+```
