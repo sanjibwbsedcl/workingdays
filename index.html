@@ -6,11 +6,10 @@
 
 <meta charset="UTF-8">
 
-<title>Working Day Calculator</title>
+<title>WBSEDCL Working Day Calculator</title>
 
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
-
 
 <style>
 
@@ -26,18 +25,13 @@ body {
 
     background:
         linear-gradient(
-            to right,
-            #0d47a1,
-            #1976d2
+            135deg,
+            #063b82,
+            #1976d2,
+            #0d47a1
         );
 
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    height: 100vh;
+    min-height: 100vh;
 
     padding-top: 34px;
 
@@ -47,7 +41,7 @@ body {
 
 
 /* =========================================================
-   SCROLLING HOLIDAY MESSAGE
+   HOLIDAY SCROLLING MESSAGE
    ========================================================= */
 
 .holiday-scroll {
@@ -55,7 +49,6 @@ body {
     position: fixed;
 
     top: 0;
-
     left: 0;
 
     width: 100%;
@@ -77,10 +70,6 @@ body {
 }
 
 
-/* =========================================================
-   HOLIDAY UPDATE LABEL
-   ========================================================= */
-
 .holiday-scroll-title {
 
     flex-shrink: 0;
@@ -95,8 +84,6 @@ body {
 
     color: #ffffff;
 
-    font-family: Arial, sans-serif;
-
     font-size: 12px;
 
     font-weight: bold;
@@ -105,10 +92,6 @@ body {
 
 }
 
-
-/* =========================================================
-   SCROLLING WINDOW
-   ========================================================= */
 
 .holiday-scroll-window {
 
@@ -127,10 +110,6 @@ body {
 }
 
 
-/* =========================================================
-   SCROLLING MESSAGE
-   ========================================================= */
-
 .holiday-scroll-content {
 
     position: absolute;
@@ -140,8 +119,6 @@ body {
     white-space: nowrap;
 
     color: #0d47a1;
-
-    font-family: Arial, sans-serif;
 
     font-size: 13px;
 
@@ -153,13 +130,7 @@ body {
 }
 
 
-/* =========================================================
-   SCROLL → CENTRE → STOP → CONTINUE
-   ========================================================= */
-
 @keyframes holidayScroll {
-
-    /* Start from right */
 
     0% {
 
@@ -169,9 +140,6 @@ body {
 
     }
 
-
-    /* Move to centre */
-
     32% {
 
         left: 50%;
@@ -180,9 +148,6 @@ body {
 
     }
 
-
-    /* STOP AT CENTRE */
-
     50% {
 
         left: 50%;
@@ -190,9 +155,6 @@ body {
         transform: translateX(-50%);
 
     }
-
-
-    /* Continue towards left */
 
     100% {
 
@@ -206,31 +168,50 @@ body {
 
 
 /* =========================================================
-   MAIN CONTAINER
+   MAIN CALCULATOR CONTAINER
    ========================================================= */
 
 .container {
 
-    position: relative;
+    width: 460px;
+
+    max-width: 94%;
+
+    margin: 25px auto;
 
     background:
         linear-gradient(
             145deg,
             #ffffff,
-            #c4f3f9
+            #eaf7ff
         );
-
-    width: 420px;
-
-    max-width: 95%;
 
     padding: 20px;
 
-    border-radius: 8px;
+    border-radius: 12px;
 
     box-shadow:
-        0 8px 20px
-        rgba(0,0,0,0.2);
+        0 12px 30px
+        rgba(0,0,0,0.30);
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   LAST UPDATED
+   ========================================================= */
+
+.topRightText {
+
+    text-align: right;
+
+    font-size: 11px;
+
+    color: #0a7a28;
+
+    margin-bottom: 5px;
 
 }
 
@@ -245,12 +226,12 @@ body {
 
     align-items: center;
 
-    margin-bottom: 20px;
-
     border-bottom:
         2px solid #1976d2;
 
     padding-bottom: 10px;
+
+    margin-bottom: 18px;
 
 }
 
@@ -259,18 +240,9 @@ body {
 
     height: 55px;
 
-    margin-right: 2px;
+    width: auto;
 
-}
-
-
-.header-text h2 {
-
-    margin: 0;
-
-    color: #1976d2;
-
-    font-size: 14px;
+    margin-right: 8px;
 
 }
 
@@ -279,9 +251,20 @@ body {
 
     margin: 0;
 
-    font-size: 18px;
+    font-size: 19px;
 
     color: #0d47a1;
+
+}
+
+
+.header-text h2 {
+
+    margin: 2px 0 0 0;
+
+    font-size: 13px;
+
+    color: #1976d2;
 
 }
 
@@ -294,9 +277,13 @@ body {
 
     text-align: center;
 
-    font-weight: 600;
+    font-size: 20px;
 
-    margin-bottom: 15px;
+    font-weight: bold;
+
+    color: #083b76;
+
+    margin-bottom: 18px;
 
 }
 
@@ -316,111 +303,84 @@ body {
 }
 
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.footer {
-
-    margin-top: 15px;
-
-    font-size: 12px;
-
-    color: gray;
-
-    text-align: center;
-
-}
-
-
-/* =========================================================
-   LABEL
-   ========================================================= */
-
 label {
 
-    width: 120px;
+    width: 125px;
 
-    font-weight: 600;
+    font-weight: bold;
 
     font-size: 14px;
 
-}
-
-
-/* =========================================================
-   LAST UPDATED
-   ========================================================= */
-
-.topRightText {
-
-    text-align: right;
-
-    top: 10px;
-
-    right: 15px;
-
-    font-size: 12px;
-
-    color: #0a7a28;
-
-    opacity: 0.8;
-
-    font-family: Arial, sans-serif;
+    color: #263238;
 
 }
 
-
-/* =========================================================
-   INPUT
-   ========================================================= */
 
 input {
 
     flex: 1;
 
-    padding: 6px 8px;
+    padding: 8px;
 
-    border: 1px solid #ccc;
+    border:
+        1px solid #b8c7d9;
 
-    border-radius: 4px;
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    border-radius: 5px;
 
     font-size: 14px;
 
-    color: #000;
-
-    background-color: #fff;
-
     box-sizing: border-box;
+
+    background: white;
 
 }
 
 
-input[type="date"] {
+input:focus {
 
-    appearance: none;
+    outline: none;
 
-    -webkit-appearance: none;
+    border-color: #1976d2;
+
+    box-shadow:
+        0 0 5px
+        rgba(25,118,210,0.30);
 
 }
 
 
 /* =========================================================
-   BUTTON
+   DUE DATE DISPLAY
+   ========================================================= */
+
+#result {
+
+    font-weight: bold;
+
+    color: #0d47a1;
+
+    background: #e8f4ff;
+
+    text-align: center;
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================================
+   COPY BUTTON
    ========================================================= */
 
 button {
 
-    padding: 6px 10px;
+    padding: 8px 12px;
 
     margin-left: 6px;
 
     font-size: 13px;
+
+    font-weight: bold;
 
     background: #1976d2;
 
@@ -428,7 +388,7 @@ button {
 
     border: none;
 
-    border-radius: 4px;
+    border-radius: 5px;
 
     cursor: pointer;
 
@@ -450,11 +410,11 @@ button:hover {
 
     display: none;
 
-    color: #0a7a28;
+    color: #08752a;
 
     font-size: 13px;
 
-    font-weight: 600;
+    font-weight: bold;
 
     margin-top: 8px;
 
@@ -471,17 +431,611 @@ button:hover {
 
     display: none;
 
-    background: #ffe6e6;
+    background: #ffe7e7;
 
-    color: #b30000;
+    color: #b00000;
 
-    padding: 6px;
+    padding: 8px;
 
     font-size: 13px;
 
     margin-bottom: 10px;
 
-    border-radius: 4px;
+    border-radius: 5px;
+
+    border-left:
+        4px solid #d00000;
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+
+    margin-top: 15px;
+
+    font-size: 11px;
+
+    color: #607d8b;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   CALENDAR SECTION
+   ========================================================= */
+
+#calendarSection {
+
+    display: none;
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 25px auto 40px auto;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   CALENDAR HEADER
+   ========================================================= */
+
+.calendar-heading {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d47a1,
+            #1976d2
+        );
+
+    color: white;
+
+    padding: 12px;
+
+    border-radius:
+        10px 10px 0 0;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,0.20);
+
+}
+
+
+.calendar-heading-title {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
+
+.calendar-heading-subtitle {
+
+    font-size: 12px;
+
+    margin-top: 4px;
+
+    opacity: 0.9;
+
+}
+
+
+/* =========================================================
+   CALENDAR LEGEND
+   ========================================================= */
+
+.calendar-legend {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    background: white;
+
+    padding: 10px;
+
+    border-left:
+        1px solid #d5e1ec;
+
+    border-right:
+        1px solid #d5e1ec;
+
+}
+
+
+.legend-item {
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+}
+
+
+.legend-box {
+
+    width: 15px;
+
+    height: 15px;
+
+    border-radius: 3px;
+
+    border: 1px solid #aaa;
+
+}
+
+
+/* =========================================================
+   CALENDAR CONTAINER
+   ========================================================= */
+
+#calendarContainer {
+
+    background: #f5f9fd;
+
+    padding: 12px;
+
+    border-radius:
+        0 0 10px 10px;
+
+}
+
+
+/* =========================================================
+   MONTH CALENDAR
+   ========================================================= */
+
+.month-calendar {
+
+    background: white;
+
+    margin-bottom: 18px;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 3px 10px
+        rgba(0,0,0,0.12);
+
+}
+
+
+.month-title {
+
+    background: #e8f1fb;
+
+    color: #0d47a1;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    padding: 9px;
+
+    border-bottom:
+        2px solid #1976d2;
+
+}
+
+
+/* =========================================================
+   WEEK HEADER
+   ========================================================= */
+
+.week-header {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    background: #0d47a1;
+
+    color: white;
+
+}
+
+
+.week-header div {
+
+    text-align: center;
+
+    padding: 6px 2px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
+   DAYS GRID
+   ========================================================= */
+
+.days-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+}
+
+
+/* =========================================================
+   DAY CELL
+   ========================================================= */
+
+.day {
+
+    min-height: 60px;
+
+    border-right:
+        1px solid #e1e7ed;
+
+    border-bottom:
+        1px solid #e1e7ed;
+
+    padding: 4px;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+
+}
+
+
+.day:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 3px 8px
+        rgba(0,0,0,0.18);
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
+   EMPTY DAY
+   ========================================================= */
+
+.empty-day {
+
+    background: #f7f9fb;
+
+}
+
+
+/* =========================================================
+   WORKING DAY - BLUE
+   ========================================================= */
+
+.working-day {
+
+    background: #e7f2ff;
+
+    color: #0755a5;
+
+}
+
+
+.working-day .date-number {
+
+    color: #0755a5;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
+   HOLIDAY - STRONG RED
+   ========================================================= */
+
+.holiday-day {
+
+    background: #ffd6d6;
+
+    color: #b00000;
+
+}
+
+
+.holiday-day .date-number {
+
+    color: #b00000;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
+   SATURDAY / SUNDAY - RED
+   ========================================================= */
+
+.weekend-day {
+
+    background: #ffe5e5;
+
+    color: #c00000;
+
+}
+
+
+.weekend-day .date-number {
+
+    color: #c00000;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
+   DATE NUMBER
+   ========================================================= */
+
+.date-number {
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
+   WORKING DAY NUMBER
+   ========================================================= */
+
+.work-number {
+
+    position: absolute;
+
+    right: 4px;
+
+    top: 4px;
+
+    background: #1976d2;
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    padding: 2px 4px;
+
+    border-radius: 3px;
+
+}
+
+
+/* =========================================================
+   HOLIDAY LABEL
+   ========================================================= */
+
+.holiday-label {
+
+    font-size: 8px;
+
+    font-weight: bold;
+
+    margin-top: 5px;
+
+    color: #b00000;
+
+}
+
+
+/* =========================================================
+   DI DATE
+   ========================================================= */
+
+.start-day {
+
+    background:
+        linear-gradient(
+            135deg,
+            #d8ffd9,
+            #a9efb0
+        ) !important;
+
+    border:
+        3px solid #15952a !important;
+
+    color: #08751d !important;
+
+    box-shadow:
+        inset 0 0 0 1px white,
+        0 0 7px
+        rgba(21,149,42,0.35);
+
+}
+
+
+.start-day::after {
+
+    content: "DI DATE";
+
+    position: absolute;
+
+    bottom: 3px;
+
+    left: 4px;
+
+    font-size: 8px;
+
+    font-weight: bold;
+
+    color: #08751d;
+
+}
+
+
+/* =========================================================
+   DUE DATE
+   ========================================================= */
+
+.due-day {
+
+    background:
+        linear-gradient(
+            135deg,
+            #eadcff,
+            #cbb1ff
+        ) !important;
+
+    border:
+        3px solid #673ab7 !important;
+
+    color: #45218b !important;
+
+    box-shadow:
+        0 0 9px
+        rgba(103,58,183,0.45);
+
+}
+
+
+.due-day::after {
+
+    content: "DUE ON";
+
+    position: absolute;
+
+    bottom: 3px;
+
+    left: 4px;
+
+    font-size: 8px;
+
+    font-weight: bold;
+
+    color: #45218b;
+
+}
+
+
+/* =========================================================
+   CALENDAR SUMMARY
+   ========================================================= */
+
+.calendar-summary {
+
+    background: white;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    border:
+        1px solid #d6e3ef;
+
+    box-shadow:
+        0 3px 10px
+        rgba(0,0,0,0.10);
+
+}
+
+
+.summary-date {
+
+    color: #0d47a1;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+}
+
+
+.summary-arrow {
+
+    color: #1976d2;
+
+    font-size: 20px;
+
+    margin: 0 8px;
+
+}
+
+
+/* =========================================================
+   CALENDAR ANIMATION
+   ========================================================= */
+
+@keyframes calendarAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.calendar-animation {
+
+    animation:
+        calendarAppear 0.5s ease;
 
 }
 
@@ -490,25 +1044,23 @@ button:hover {
    MOBILE
    ========================================================= */
 
-@media (max-width: 480px) {
-
+@media (max-width: 600px) {
 
     body {
-
-        align-items: center;
-
-        height: 100vh;
-
-        min-height: 100vh;
 
         padding-top: 32px;
 
     }
 
 
-    /* -----------------------------
-       Scrolling message
-       ----------------------------- */
+    .container {
+
+        margin-top: 15px;
+
+        padding: 16px;
+
+    }
+
 
     .holiday-scroll {
 
@@ -541,23 +1093,7 @@ button:hover {
 
         font-size: 11px;
 
-        animation-duration:
-            30s;
-
-    }
-
-
-    /* -----------------------------
-       Calculator
-       ----------------------------- */
-
-    .container {
-
-        width: 420px;
-
-        max-width: 94%;
-
-        padding: 18px;
+        animation-duration: 30s;
 
     }
 
@@ -575,7 +1111,7 @@ button:hover {
 
         width: 100%;
 
-        margin-bottom: 4px;
+        margin-bottom: 5px;
 
     }
 
@@ -591,21 +1127,84 @@ button:hover {
 
         margin-left: 0;
 
-        margin-top: 6px;
+        margin-top: 7px;
 
     }
 
 
-    .companyName {
+    .header img {
 
-        font-size: 13px;
+        height: 45px;
 
     }
 
 
-    .departmentName {
+    .header-text h3 {
+
+        font-size: 16px;
+
+    }
+
+
+    .header-text h2 {
+
+        font-size: 11px;
+
+    }
+
+
+    .title {
+
+        font-size: 18px;
+
+    }
+
+
+    #calendarSection {
+
+        padding: 0 6px;
+
+    }
+
+
+    .day {
+
+        min-height: 50px;
+
+        padding: 3px;
+
+    }
+
+
+    .date-number {
 
         font-size: 12px;
+
+    }
+
+
+    .work-number {
+
+        position: static;
+
+        display: inline-block;
+
+        margin-top: 2px;
+
+    }
+
+
+    .holiday-label {
+
+        font-size: 7px;
+
+    }
+
+
+    .start-day::after,
+    .due-day::after {
+
+        font-size: 6px;
 
     }
 
@@ -625,7 +1224,6 @@ button:hover {
 
 <div class="holiday-scroll">
 
-
     <div class="holiday-scroll-title">
 
         HOLIDAY UPDATE
@@ -635,29 +1233,27 @@ button:hover {
 
     <div class="holiday-scroll-window">
 
-
         <div class="holiday-scroll-content">
 
-            
             1. Id-Ud-Zoha (Bakrid): 28.05.2026 In lieu of 26.05.2026 and 27.05.2026
+
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
             2. Birth Anniversary of Dr. Syama Prasad Mookerjee: 06.07.2026
 
         </div>
 
-
     </div>
-
 
 </div>
 
 
+
 <!-- =====================================================
-     ORIGINAL CALCULATOR
+     CALCULATOR
      ===================================================== -->
 
 <div class="container">
-
 
     <div id="errorMessage"></div>
 
@@ -671,7 +1267,6 @@ button:hover {
 
     <div class="header">
 
-
         <img
             src="wbsedcl_logo.png"
             alt="WBSEDCL Logo"
@@ -680,23 +1275,19 @@ button:hover {
 
         <div class="header-text">
 
-
             <h3>
 
                 WBSEDCL
 
             </h3>
 
-
             <h2>
 
-                Procurement &amp; Contract Department.
+                Procurement &amp; Contract Department
 
             </h2>
 
-
         </div>
-
 
     </div>
 
@@ -710,7 +1301,6 @@ button:hover {
 
     <div class="row">
 
-
         <label>
 
             Enter DI Date
@@ -723,12 +1313,10 @@ button:hover {
             id="startDate"
         >
 
-
     </div>
 
 
     <div class="row">
-
 
         <label>
 
@@ -740,14 +1328,14 @@ button:hover {
         <input
             type="number"
             id="workingDays"
+            min="1"
+            placeholder="Enter working days"
         >
-
 
     </div>
 
 
     <div class="row">
-
 
         <label>
 
@@ -760,6 +1348,7 @@ button:hover {
             type="text"
             id="result"
             readonly
+            placeholder="Due date will appear here"
         >
 
 
@@ -770,7 +1359,6 @@ button:hover {
             Copy
 
         </button>
-
 
     </div>
 
@@ -784,16 +1372,134 @@ button:hover {
 
     <div class="footer">
 
-        Excluding Saturday, Sunday &amp;
-        Holidays (2021-2026)
+        Excluding Saturday, Sunday &amp; Holidays (2021-2026)
 
     </div>
-
 
 </div>
 
 
+
+<!-- =====================================================
+     WORKING DAY CALENDAR
+     ===================================================== -->
+
+<div id="calendarSection">
+
+    <div class="calendar-heading">
+
+        <div class="calendar-heading-title">
+
+            WORKING DAY CALENDAR
+
+        </div>
+
+        <div class="calendar-heading-subtitle">
+
+            DI Date to Due On Date
+
+        </div>
+
+    </div>
+
+
+    <!-- LEGEND -->
+
+    <div class="calendar-legend">
+
+        <div class="legend-item">
+
+            <span
+                class="legend-box"
+                style="background:#e7f2ff;">
+            </span>
+
+            Working Day
+
+        </div>
+
+
+        <div class="legend-item">
+
+            <span
+                class="legend-box"
+                style="background:#ffd6d6;">
+            </span>
+
+            Holiday
+
+        </div>
+
+
+        <div class="legend-item">
+
+            <span
+                class="legend-box"
+                style="background:#ffe5e5;">
+            </span>
+
+            Saturday / Sunday
+
+        </div>
+
+
+        <div class="legend-item">
+
+            <span
+                class="legend-box"
+                style="background:#a9efb0;">
+            </span>
+
+            DI Date
+
+        </div>
+
+
+        <div class="legend-item">
+
+            <span
+                class="legend-box"
+                style="background:#cbb1ff;">
+            </span>
+
+            Due On
+
+        </div>
+
+    </div>
+
+
+    <div id="calendarContainer"></div>
+
+
+    <div class="calendar-summary">
+
+        <span
+            class="summary-date"
+            id="summaryStart">
+        </span>
+
+
+        <span class="summary-arrow">
+
+            →
+
+        </span>
+
+
+        <span
+            class="summary-date"
+            id="summaryDue">
+        </span>
+
+    </div>
+
+</div>
+
+
+
 <script>
+
 
 /* =========================================================
    HOLIDAY DATA
@@ -805,7 +1511,7 @@ let holidayLoaded = false;
 
 
 /* =========================================================
-   LOAD CSV FILE
+   LOAD HOLIDAY CSV
    ========================================================= */
 
 fetch("holidays.csv")
@@ -814,9 +1520,7 @@ fetch("holidays.csv")
 
     if (!response.ok) {
 
-        throw new Error(
-            "CSV not found"
-        );
+        throw new Error("CSV not found");
 
     }
 
@@ -852,11 +1556,6 @@ fetch("holidays.csv")
     holidayLoaded = true;
 
 
-    /*
-       Recalculate if
-       values already entered
-    */
-
     calculateDate();
 
 })
@@ -872,12 +1571,12 @@ fetch("holidays.csv")
 });
 
 
+
 /* =========================================================
-   CALCULATE DATE
+   CALCULATE DUE DATE
    ========================================================= */
 
 function calculateDate() {
-
 
     let startValue =
         document.getElementById(
@@ -895,6 +1594,10 @@ function calculateDate() {
         !startValue ||
         !daysValue
     ) {
+
+        document.getElementById(
+            "calendarSection"
+        ).style.display = "none";
 
         return;
 
@@ -914,6 +1617,12 @@ function calculateDate() {
             "result"
         ).value = "";
 
+
+        document.getElementById(
+            "calendarSection"
+        ).style.display = "none";
+
+
         return;
 
     }
@@ -927,8 +1636,7 @@ function calculateDate() {
 
 
     /*
-       DI Date is counted
-       as Working Day 1
+       DI Date is Working Day 1.
     */
 
     let daysToAdd =
@@ -942,7 +1650,6 @@ function calculateDate() {
         count < daysToAdd
     ) {
 
-
         startDate.setDate(
             startDate.getDate() + 1
         );
@@ -955,11 +1662,6 @@ function calculateDate() {
         let formatted =
             formatDate(startDate);
 
-
-        /*
-           Sunday = 0
-           Saturday = 6
-        */
 
         if (
 
@@ -984,12 +1686,596 @@ function calculateDate() {
     }
 
 
+    let dueDate =
+        new Date(startDate);
+
+
     document.getElementById(
         "result"
     ).value =
-        formatDate(startDate);
+        formatDate(dueDate);
+
+
+    generateCalendar(
+
+        new Date(
+            startValue +
+            "T00:00:00"
+        ),
+
+        dueDate
+
+    );
 
 }
+
+
+
+/* =========================================================
+   GENERATE CALENDAR
+   ========================================================= */
+
+function generateCalendar(
+    startDate,
+    dueDate
+) {
+
+    let calendarSection =
+        document.getElementById(
+            "calendarSection"
+        );
+
+
+    let calendarContainer =
+        document.getElementById(
+            "calendarContainer"
+        );
+
+
+    calendarContainer.innerHTML = "";
+
+
+    calendarSection.style.display =
+        "block";
+
+
+    calendarSection.classList.remove(
+        "calendar-animation"
+    );
+
+
+    void calendarSection.offsetWidth;
+
+
+    calendarSection.classList.add(
+        "calendar-animation"
+    );
+
+
+    document.getElementById(
+        "summaryStart"
+    ).textContent =
+        "DI Date: " +
+        formatDate(startDate);
+
+
+    document.getElementById(
+        "summaryDue"
+    ).textContent =
+        "Due On: " +
+        formatDate(dueDate);
+
+
+    /*
+       Start with first month
+    */
+
+    let current =
+        new Date(
+            startDate.getFullYear(),
+            startDate.getMonth(),
+            1
+        );
+
+
+    let lastMonth =
+        new Date(
+            dueDate.getFullYear(),
+            dueDate.getMonth(),
+            1
+        );
+
+
+    /*
+       Working day counter
+    */
+
+    let workingNumber = 0;
+
+
+    while (
+        current <= lastMonth
+    ) {
+
+        let monthBox =
+            createMonthCalendar(
+
+                current,
+
+                startDate,
+
+                dueDate,
+
+                workingNumber
+
+            );
+
+
+        workingNumber =
+            monthBox.nextWorkingNumber;
+
+
+        calendarContainer.appendChild(
+            monthBox.element
+        );
+
+
+        current.setMonth(
+            current.getMonth() + 1
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CREATE MONTH CALENDAR
+   ========================================================= */
+
+function createMonthCalendar(
+
+    monthDate,
+    startDate,
+    dueDate,
+    workingNumber
+
+) {
+
+    let monthBox =
+        document.createElement(
+            "div"
+        );
+
+
+    monthBox.className =
+        "month-calendar";
+
+
+    /*
+       Month title
+    */
+
+    let monthTitle =
+        document.createElement(
+            "div"
+        );
+
+
+    monthTitle.className =
+        "month-title";
+
+
+    monthTitle.textContent =
+        monthDate.toLocaleString(
+            "en-IN",
+            {
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+
+    monthBox.appendChild(
+        monthTitle
+    );
+
+
+
+    /*
+       Week header
+    */
+
+    let weekHeader =
+        document.createElement(
+            "div"
+        );
+
+
+    weekHeader.className =
+        "week-header";
+
+
+    let weekNames = [
+
+        "SUN",
+        "MON",
+        "TUE",
+        "WED",
+        "THU",
+        "FRI",
+        "SAT"
+
+    ];
+
+
+    weekNames.forEach(
+        day => {
+
+            let div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                day;
+
+
+            weekHeader.appendChild(
+                div
+            );
+
+        }
+    );
+
+
+    monthBox.appendChild(
+        weekHeader
+    );
+
+
+
+    /*
+       Days grid
+    */
+
+    let daysGrid =
+        document.createElement(
+            "div"
+        );
+
+
+    daysGrid.className =
+        "days-grid";
+
+
+    let year =
+        monthDate.getFullYear();
+
+
+    let month =
+        monthDate.getMonth();
+
+
+    let firstDay =
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
+
+
+    let daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
+
+    /*
+       Empty cells before first day
+    */
+
+    for (
+        let i = 0;
+        i < firstDay;
+        i++
+    ) {
+
+        let empty =
+            document.createElement(
+                "div"
+            );
+
+
+        empty.className =
+            "day empty-day";
+
+
+        daysGrid.appendChild(
+            empty
+        );
+
+    }
+
+
+
+    /*
+       Dates
+    */
+
+    for (
+        let d = 1;
+        d <= daysInMonth;
+        d++
+    ) {
+
+        let date =
+            new Date(
+                year,
+                month,
+                d
+            );
+
+
+        let cell =
+            document.createElement(
+                "div"
+            );
+
+
+        cell.className =
+            "day";
+
+
+        let day =
+            date.getDay();
+
+
+        let formatted =
+            formatDate(date);
+
+
+        let isHoliday =
+            holidayLoaded &&
+            holidays.includes(
+                formatted
+            );
+
+
+        let isWeekend =
+            day === 0 ||
+            day === 6;
+
+
+        let withinRange =
+            date >= startDate &&
+            date <= dueDate;
+
+
+
+        /*
+           Date number
+        */
+
+        let dateNumber =
+            document.createElement(
+                "div"
+            );
+
+
+        dateNumber.className =
+            "date-number";
+
+
+        dateNumber.textContent =
+            d;
+
+
+        cell.appendChild(
+            dateNumber
+        );
+
+
+
+        /*
+           Apply colours only
+           to calculation period
+        */
+
+        if (withinRange) {
+
+            /*
+               Official Holiday
+            */
+
+            if (isHoliday) {
+
+                cell.classList.add(
+                    "holiday-day"
+                );
+
+
+                let holidayLabel =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                holidayLabel.className =
+                    "holiday-label";
+
+
+                holidayLabel.textContent =
+                    "HOLIDAY";
+
+
+                cell.appendChild(
+                    holidayLabel
+                );
+
+            }
+
+
+            /*
+               Saturday / Sunday
+            */
+
+            else if (isWeekend) {
+
+                cell.classList.add(
+                    "weekend-day"
+                );
+
+            }
+
+
+            /*
+               Working Day
+            */
+
+            else {
+
+                workingNumber++;
+
+
+                cell.classList.add(
+                    "working-day"
+                );
+
+
+                let workNumber =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                workNumber.className =
+                    "work-number";
+
+
+                workNumber.textContent =
+                    "WD " +
+                    workingNumber;
+
+
+                cell.appendChild(
+                    workNumber
+                );
+
+            }
+
+        }
+
+
+        /*
+           DI Date
+        */
+
+        if (
+            sameDate(
+                date,
+                startDate
+            )
+        ) {
+
+            cell.classList.remove(
+                "working-day",
+                "holiday-day",
+                "weekend-day"
+            );
+
+
+            cell.classList.add(
+                "start-day"
+            );
+
+        }
+
+
+        /*
+           Due On Date
+        */
+
+        if (
+            sameDate(
+                date,
+                dueDate
+            )
+        ) {
+
+            cell.classList.remove(
+                "working-day",
+                "holiday-day",
+                "weekend-day"
+            );
+
+
+            cell.classList.add(
+                "due-day"
+            );
+
+        }
+
+
+        daysGrid.appendChild(
+            cell
+        );
+
+    }
+
+
+    monthBox.appendChild(
+        daysGrid
+    );
+
+
+    return {
+
+        element:
+            monthBox,
+
+        nextWorkingNumber:
+            workingNumber
+
+    };
+
+}
+
+
+
+/* =========================================================
+   COMPARE DATES
+   ========================================================= */
+
+function sameDate(
+    a,
+    b
+) {
+
+    return (
+
+        a.getFullYear() ===
+        b.getFullYear()
+
+        &&
+
+        a.getMonth() ===
+        b.getMonth()
+
+        &&
+
+        a.getDate() ===
+        b.getDate()
+
+    );
+
+}
+
 
 
 /* =========================================================
@@ -997,7 +2283,6 @@ function calculateDate() {
    ========================================================= */
 
 function formatDate(date) {
-
 
     let dd =
         String(
@@ -1022,14 +2307,17 @@ function formatDate(date) {
 
 
     return (
+
         dd +
         "-" +
         mm +
         "-" +
         yyyy
+
     );
 
 }
+
 
 
 /* =========================================================
@@ -1056,12 +2344,12 @@ document
     );
 
 
+
 /* =========================================================
    COPY RESULT
    ========================================================= */
 
 function copyResult() {
-
 
     let result =
         document.getElementById(
@@ -1080,7 +2368,6 @@ function copyResult() {
         navigator.clipboard
     ) {
 
-
         navigator.clipboard
 
             .writeText(result)
@@ -1093,7 +2380,6 @@ function copyResult() {
                 fallbackCopy
             );
 
-
     }
 
     else {
@@ -1105,12 +2391,12 @@ function copyResult() {
 }
 
 
+
 /* =========================================================
    COPY SUCCESS MESSAGE
    ========================================================= */
 
 function showCopyMessage() {
-
 
     let msg =
         document.getElementById(
@@ -1135,12 +2421,12 @@ function showCopyMessage() {
 }
 
 
+
 /* =========================================================
    FALLBACK COPY
    ========================================================= */
 
 function fallbackCopy() {
-
 
     let result =
         document.getElementById(
@@ -1181,12 +2467,12 @@ function fallbackCopy() {
 }
 
 
+
 /* =========================================================
    ERROR MESSAGE
    ========================================================= */
 
 function showError(message) {
-
 
     let box =
         document.getElementById(
@@ -1209,3 +2495,4 @@ function showError(message) {
 </body>
 
 </html>
+```
